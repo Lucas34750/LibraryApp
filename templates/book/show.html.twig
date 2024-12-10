@@ -1,0 +1,71 @@
+{# templates/book/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ book.title }}
+	Details
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<h1 class="mb-4">{{ book.title }}</h1>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<strong>Genre:</strong>
+				{{ book.genre }}
+			</li>
+			<li class="list-group-item">
+				<strong>Author:</strong>
+				<a href="{{path('app_author_show',{'id': book.author.id })}}">{{ book.author ? book.author.firstName ~ ' ' ~ book.author.lastName : 'No Author' }}</a>
+			</li>
+			<li class="list-group-item">
+				<strong>Published At:</strong>
+				{{ book.publishedAt ? book.publishedAt|date('Y-m-d') : 'Not available' }}
+			</li>
+		</ul>
+
+		<h3 class="mt-4">Borrowings</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Borrower</th>
+					<th>Borrow Date</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for borrow in book.borrows %}
+					<tr>
+						<td>{{ borrow.person.name }}</td>
+						<td>{{ borrow.borrowDate|date('Y-m-d') }}</td>
+						<td>{{ borrow.status }}</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3" class="text-center">No borrowings found for this book</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_book_index') }}" class="btn btn-secondary mt-3">Back to List</a>
+		{% if is_granted('ROLE_USER') and not isBorrowed %}
+			<a href="{{ path('app_borrow', {'id': book.id}) }}" class="btn btn-success mt-3">Borrow</a>
+
+
+		{% endif %}
+		{% if is_granted('ROLE_USER') and isBorrowed and isMine %}
+			<a href="{{ path('app_borrow_giveBack', {'id': book.id}) }}" class="btn btn-primary mt-3">give Back</a>
+		{% endif %}
+		{% if is_granted('ROLE_ADMIN') %}
+
+
+			{{ include('book/_delete_form.html.twig') }}
+			<a class="btn btn-warning mt-3" href="{{ path('app_book_edit', {'id': book.id}) }}">edit</a>
+
+		{% endif %}
+
+
+	</div>
+{% endblock %}

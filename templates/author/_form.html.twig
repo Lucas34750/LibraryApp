@@ -1,0 +1,21 @@
+{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    <div class="mb-3">
+        {{ form_label(form.firstname, 'First Name', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.firstname) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.lastname, 'Last Name', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.lastname) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.bio, 'Biography', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.bio, {'attr': {'class': 'form-control', 'rows': 4}}) }}
+        {{ form_errors(form.bio) }}
+    </div>
+
+    <button class="btn btn-success">{{ button_label|default('Save Author') }}</button>
+{{ form_end(form) }}

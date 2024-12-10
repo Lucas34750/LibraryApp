@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Register</h1>
+
+        {# Affiche les erreurs globales du formulaire (non spécifiques à un champ) #}
+        {{ form_errors(registrationForm) }}
+
+        {# Démarrage du formulaire #}
+        {{ form_start(registrationForm, {'attr': {'class': 'form-horizontal'}}) }}
+        
+        {# Email Field #}
+        <div class="mb-3">
+            {{ form_label(registrationForm.email, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(registrationForm.email) }}
+        </div>
+        
+        {# Name Field #}
+        <div class="mb-3">
+            {{ form_label(registrationForm.name, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(registrationForm.name) }}
+        </div>
+
+        
+
+        {# Password Field #}
+        <div class="mb-3">
+            {{ form_label(registrationForm.plainPassword, 'Password', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(registrationForm.plainPassword) }}
+        </div>
+
+        {# Agree Terms Checkbox #}
+        <div class="form-check mb-3">
+            {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+            {{ form_label(registrationForm.agreeTerms, null, {'label_attr': {'class': 'form-check-label'}}) }}
+            {{ form_errors(registrationForm.agreeTerms) }}
+        </div>
+
+        {# Submit Button #}
+        <button type="submit" class="btn btn-success mb-3 btn-lg">Register</button>
+
+        {{ form_end(registrationForm) }}
+        <a href="{{path('app_login')}}" class="btn btn-primary">Log in</a>
+    </div>
+{% endblock %}

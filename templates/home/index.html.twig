@@ -1,0 +1,53 @@
+{# templates/home/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to the Library{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-4">Welcome to the Library Management System</h1>
+            <p class="lead">Manage your books, authors, and borrowings easily</p>
+        </div>
+
+        <div class="mt-4 text-center">
+            <a href="{{ path('app_book_index') }}" class="btn btn-primary btn-lg">View Books</a>
+            <a href="{{ path('app_author_index') }}" class="btn btn-secondary btn-lg">View Authors</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('app_borrow_index') }}" class="btn btn-success btn-lg">View Borrowings</a>
+                <a href="{{ path('app_user_index') }}" class="btn btn-warning btn-lg">View Users</a>
+            {% endif %}
+        </div>
+
+        {% if borrows is not empty %}
+            <div class="mt-5">
+                <h2>Your Current Borrowings</h2>
+                <table class="table table-striped mt-3">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Book Title</th>
+                            <th>Borrow Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for borrow in borrows %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td><a href="{{path('app_book_show',{'id':borrow.book.id})}}">{{ borrow.book.title }}</a></td>
+                                <td>{{ borrow.borrowDate|date('Y-m-d') }}</td>
+                                <td>{{ borrow.status }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info mt-5" role="alert">
+                You have no borrowings at the moment.
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

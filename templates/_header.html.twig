@@ -1,0 +1,46 @@
+{# templates/_header.html.twig #}
+
+<header class="bg-primary text-white py-3">
+	<div class="container">
+		<div
+			class="d-flex justify-content-between align-items-center">
+			<!-- Logo ou Titre -->
+			<a href="{{path('app')}}" class="text-white text-decoration-none">
+				<h1 class="mb-0">Library Management</h1>
+			</a>
+
+			<!-- Menu de navigation -->
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ms-auto">
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('app_book_index') }}">Books</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('app_author_index') }}">Authors</a>
+						</li>
+						{% if is_granted('ROLE_ADMIN') %}
+							<li class="nav-item">
+								<a class="nav-link text-white" href="{{ path('app_borrow_index') }}">Borrow</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white" href="{{ path('app_user_index') }}">Users</a>
+							</li>
+						{% endif %}
+						{% if app.user %}
+						<li class="nav-item">
+							<a class="nav-link text-white" href="{{ path('app_logout') }}">LogOut</a>
+						</li>
+						{% endif %}
+
+					</ul>
+				</div>
+			</nav>
+
+
+		</div>
+	</div>
+</header>

@@ -1,0 +1,59 @@
+{# templates/book/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Books List
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<h1 class="mb-4">
+			{% if author %}
+				{{ author.firstName}}
+				{{ author.lastName}}'s
+			{% endif %}Books
+
+		</h1>
+		{% if is_granted('ROLE_ADMIN') %}
+			<a href="{{ path('app_book_new') }}" class="btn btn-success mb-3">Add New Book</a>
+		{% endif %}
+		<form method="GET" action="">
+			<input type="text" name="query" placeholder="Rechercher..." class="form-control"/>
+			<button type="submit" class="btn btn-primary mt-3 mb-3">Rechercher</button>
+		</form>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Genre</th>
+					<th>Author</th>
+					<th>Published At</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for book in books %}
+					<tr>
+						<td>{{ book.title }}</td>
+						<td>{{ book.genre }}</td>
+						<td><a href="{{path('app_author_show',{'id':book.author.id})}}">{{ book.author.firstName ~ ' ' ~ book.author.lastName }}</a></td>
+						<td>{{ book.publishedAt ? book.publishedAt|date('Y-m-d') : 'Not available' }}</td>
+						<td>
+							{% if is_granted('ROLE_ADMIN') %}
+
+								<a href="{{ path('app_book_edit', {'id': book.id}) }}" class="btn btn-warning btn-sm">Edit</a>
+							{% endif %}
+
+							<a href="{{ path('app_book_show', {'id': book.id}) }}" class="btn btn-info btn-sm">Details</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6" class="text-center">No books found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

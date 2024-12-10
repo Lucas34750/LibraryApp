@@ -1,0 +1,44 @@
+{# templates/borrow/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Borrowing List
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-4">
+		<h1 class="mb-4">Borrowed Books</h1>
+
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Borrower</th>
+					<th>Book</th>
+					<th>Borrow Date</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for borrow in borrows %}
+					<tr>
+						<td>
+							<a href="{{path('app_user_show',{'id':borrow.person.id})}}">{{ borrow.person.name }}</a>
+						</td>
+
+						<td>
+							<a href="{{path('app_book_show',{'id':borrow.book.id})}}">{{ borrow.book.title }}</a>
+						</td>
+
+						<td>{{ borrow.borrowDate|date('Y-m-d') }}</td>
+						<td>{{ borrow.status }}</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4" class="text-center">No borrowings found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

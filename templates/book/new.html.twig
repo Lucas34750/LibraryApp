@@ -1,0 +1,16 @@
+{# templates/book/new.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Add New Book{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4">Add New Book</h1>
+
+    {{ include('book/_form.html.twig') }}
+
+
+        <a href="{{ path('app_book_index') }}" class="btn btn-secondary mt-3">Back to List</a>
+    </div>
+{% endblock %}

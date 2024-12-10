@@ -1,0 +1,28 @@
+
+        {{ form_start(form) }}
+            <div class="mb-3">
+                {{ form_label(form.title, 'Book Title') }}
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.title) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.genre, 'Genre') }}
+                {{ form_widget(form.genre, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.genre) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.author, 'Author') }}
+                {{ form_widget(form.author, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.author) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.publishedAt, 'Published At') }}
+                {{ form_widget(form.publishedAt, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.publishedAt) }}
+            </div>
+
+            <button type="submit" class="btn btn-success">Save Book</button>
+        {{ form_end(form) }}

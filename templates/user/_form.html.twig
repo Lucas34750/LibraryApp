@@ -1,0 +1,30 @@
+
+    {{ form_start(form) }}
+
+    <div class="mb-3">
+        {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Enter email address'}}) }}
+        {{ form_errors(form.email) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.name, 'Name', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Enter name'}}) }}
+        {{ form_errors(form.name) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.plainPassword, 'Password', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Enter password'}}) }}
+        {{ form_errors(form.plainPassword) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.roles, 'Roles', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.roles, {'attr': {'class': 'form-check'}}) }}
+        {{ form_errors(form.roles) }}
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Save</button>
+
+    {{ form_end(form) }}
