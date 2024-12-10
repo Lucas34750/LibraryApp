@@ -170,3 +170,7 @@ Pour installer l'application, suivez les étapes suivantes :
     symfony serve
 
 5. Accédez à l'application via http://localhost:8000.
+
+**Compte Administrateur par défaut**
+email:admin@admin.com
+mdp:admin!
