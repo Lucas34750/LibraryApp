@@ -119,6 +119,8 @@ En tant qu'utilisateur, vous pouvez afficher les informations détaillées d'un 
 
 - **Titre**, **genre**, **auteur**, **date de publication**.
 - Vous pouvez aussi voir les **emprunts** de ce livre (nom de l'emprunteur, date d'emprunt, statut).
+- empruntez le livre si il est disponible.
+- retourné le livre si vous l'avez emprunté.
 - **Modifier** ou **supprimer** le livre si nécessaire.(ADMIN)
 
 ### Créer un livre
