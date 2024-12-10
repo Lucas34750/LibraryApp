@@ -35,7 +35,7 @@ Cette application permet de gérer les utilisateurs, les auteurs, les livres et 
 
 ---
 
-## Actions disponibles pour un utilisateur
+## Utilisateur
 
 ### Consulter la liste des utilisateurs
 
@@ -69,7 +69,7 @@ En tant qu'administrateur, vous pouvez modifier les informations d'un utilisateu
 
 ---
 
-## Actions disponibles pour un auteur
+## Auteur
 
 ### Consulter la liste des auteurs
 
@@ -103,7 +103,7 @@ En tant qu'administrateur, vous pouvez modifier les informations d'un auteur exi
 
 ---
 
-## Actions disponibles pour un livre
+## Livre
 
 ### Consulter la liste des livres
 
@@ -137,7 +137,7 @@ En tant qu'administrateur, vous pouvez modifier les informations d'un livre exis
 
 ---
 
-## Actions disponibles pour un emprunt
+## Emprunt
 
 ### Consulter la liste des emprunts
 
