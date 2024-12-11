@@ -176,4 +176,4 @@ Pour installer l'application, suivez les étapes suivantes :
 **Compte Administrateur par défaut**
 Le premier compte créé par l'utilisateur est admin par défaut,
 Ensuite les utilisateurs créés via la route /register ont pour role simple utilisateur,
-ils peuvent ensuite obtenir si un compte admin vient à les modifier de la page de modification d'un utilisateur
+ils peuvent ensuite obtenir les droit d'aministartion si un compte admin vient à les modifier de la page de modification d'un utilisateur
